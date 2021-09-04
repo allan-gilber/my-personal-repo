@@ -1,0 +1,204 @@
+/* Regras gerais. */
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Regras de tags */
+
+body{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+body div {
+background-color: white;
+width: 70vw;
+margin-left: auto;
+margin-right: auto;
+padding-bottom: 10px;
+margin-top: 0;
+margin-bottom: 0;
+border-bottom: black;
+border-width: 1px;
+border-style: solid;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Classes gerais.*/
+
+.titulo-geral{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 10px 50px;
+}
+
+.botoes-de-navegacao{
+    background-color: rgb(97, 97, 218);
+    color: white;
+    padding: 10px 20%;
+    border: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 1px 10px 1px 10px;
+    text-align: center;
+    display: inline-block;
+}
+
+.botoes-de-navegacao:hover{
+    background-color: rgb(60, 60, 226);
+}
+
+.botoes-de-navegacao:active{
+    background-color: rgb(9, 9, 68);
+    color: black;
+}
+
+.background-dos-botoes-de-navegacao {
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    background-color: rgb(97, 97, 218);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.texto-github {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagens-formacao-academica{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    display:inline-block;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.imagem-avatar {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    width: 500px;
+    height: 400px;
+}
+
+.imagem-blackjack{
+    height: 200px;
+    width: 200px;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.formulario-de-contato{
+    padding-left: 50px;
+    margin-top: 10px;
+    display: block;
+}
+
+.texto-geral {
+    text-align: justify;
+    padding: 50px 50px;
+    background-color: white;
+    margin: 0;    
+}
+
+.botoes-das-redes-sociais{
+    background-color: white;
+    width:100px;
+    height:100px;
+}
+
+.chamada-redes-sociais{
+    text-align: justify;
+    padding: 10px 50px;
+}
+
+.botoes-redes-sociais{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+/* Ids especificas gerais */
+
+#disposicao-dos-botoes-das-redes-sociais{
+    padding: 0 0 0 50px;
+}
+
+/* Ids "index.html" */
+
+#css-imagem-porcentagem-github{
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    display: block;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+/* Ids "blackjack.html" */
+#imagem-exemplo-blackjack{
+    height: 500px;
+    width: 50vw;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#botao-play{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    background-color: rgb(97, 97, 218);
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    border: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/* Ids formulario-de-contatos.html" */
+
+#form-contato {
+    padding: 300px 200px;
+    text-align: justify;
+    display: block;
+}
+
+#botao-de-envio{
+    padding: 1px;
+    margin-left: 50px;
+    margin-top: 5px;
+}
