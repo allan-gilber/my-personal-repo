@@ -20,6 +20,9 @@ let primeiraRodada = true
 let somaDeTodasAsCartasDoUsuario = 0
 let somaDeTodasAsCartasDoComputador = 0
 
+let cartaDoUsuario
+let cartaDoComputador
+
 console.log( "Seja bem-vindx!")
 console.log("Vamos jogar uma partida de Blackjack/Vinte-e-um?")
 
@@ -35,45 +38,52 @@ else{
 function primeiroRound(){
    if (primeiraRodada){
       console.log("função primeira rodada")
+      
+      maoDoUsuario = [comprarCarta(), comprarCarta()]
+      maoDaMaquina = [comprarCarta(), comprarCarta()]
 
-      for (i = 0; i < 2; i++){
-         let cartaDoUsuario = comprarCarta()
-         let cartaDoComputador = comprarCarta()
+      console.log(maoDoUsuario)
+      console.log(maoDaMaquina)
+      
+      let valorDasCartasDoUsuario = maoDoUsuario.map(a => a.valor)
 
-         maoDaMaquina.push(cartaDoUsuario)
+      somaDeTodasAsCartasDoUsuario = somaDosValores(valorDasCartasDoUsuario)
 
-         maoDoUsuario.push(cartaDoComputador)
-         
-         let valorDaCartaDoUsuario = Number(cartaDoUsuario.valor) + Number(somaDeTodasAsCartasDoUsuario)
+      let valorDasCartasDoComputador = maoDaMaquina.map(a => a.valor)
 
-         somaDeTodasAsCartasDoUsuario = valorDaCartaDoUsuario
-
-         let valorDaCartaDoComputador = Number(cartaDoComputador.valor) + Number(somaDeTodasAsCartasDoComputador)
-
-         somaDeTodasAsCartasDoComputador = Number(valorDaCartaDoComputador)
-         }
-
-         primeiraRodada = false   
+      somaDeTodasAsCartasDoComputador = somaDosValores(valorDasCartasDoComputador)
+      // maoDaMaquina.push(cartaDoUsuario)
+      // maoDoUsuario.push(cartaDoComputador)
+      
+      primeiraRodada = false   
    }
+}
+
+function somaDosValores(array) {
+   let sum = 0;
+   for (let a of array) {
+      sum += a;
+   }
+   return sum;
 }
 
    
 if (!primeiraRodada){
-   // console.log("fim da primeira rodada")
+
    console.clear()
 
    let cartasIniciaisDoUsuario = maoDoUsuario.map(a => a.texto)
    
    let cartasIniciaisDaMaquina = maoDaMaquina.map(a => a.texto)
 
-   console.log(`Você iniciou com as seguintes cartas ${cartasIniciaisDoUsuario.join()}. Total de pontos: ${somaDeTodasAsCartasDoUsuario}`)
+   console.log(`Você iniciou com as seguintes cartas: ${cartasIniciaisDoUsuario.join()}. Total de pontos: ${somaDeTodasAsCartasDoUsuario}`)
    
-   console.log(`A Máquina iniciou com as seguintes cartas ${cartasIniciaisDaMaquina.join()}. Total de pontos: ${somaDeTodasAsCartasDoUsuario}`)
+   console.log(`A Máquina iniciou com as seguintes cartas: ${cartasIniciaisDaMaquina.join()}. Total de pontos: ${somaDeTodasAsCartasDoComputador}`)
    
    let continuar = confirm("Você deseja comprar uma carta?")
 
    if(continuar){
-      rodada(continuar)
+      rodada()
       } else{
          quemGanhou()
       }
@@ -81,8 +91,6 @@ if (!primeiraRodada){
 }
 
 function rodada(){
-
-   // console.log("rodada normal")
 
    console.clear()
 
@@ -102,13 +110,17 @@ function rodada(){
 
    let cartasNaMaoDaMaquina = maoDaMaquina.map(a => a.texto)
 
-   let valorDaCartaDoUsuario = Number(cartaDoUsuario.valor) + Number(somaDeTodasAsCartasDoUsuario)
+   somaDeTodasAsCartasDoUsuario += cartaDoUsuario.valor
 
-   somaDeTodasAsCartasDoUsuario = valorDaCartaDoUsuario
+   console.log("a soma de todas as cartas é:", somaDeTodasAsCartasDoUsuario)
 
-   let valorDaCartaDoComputador = Number(cartaDoComputador.valor) + Number(somaDeTodasAsCartasDoComputador)
+   // somaDeTodasAsCartasDoUsuario = valorDaCartaDoUsuario
 
-   somaDeTodasAsCartasDoComputador = Number(valorDaCartaDoComputador)
+   somaDeTodasAsCartasDoComputador += cartaDoComputador.valor 
+
+   console.log("a soma de todas as cartas é:", somaDeTodasAsCartasDoComputador)
+
+   // somaDeTodasAsCartasDoComputador = Number(valorDaCartaDoComputador)
    
    console.log(`Após adicionar a carta tirada, você possui as seguintes cartas:", ${cartasNaMaoDoUsuario.join()}. Total de pontos: ${somaDeTodasAsCartasDoUsuario}`)
 
@@ -137,11 +149,7 @@ function fimDoJogo(){
 
       devoContinuar = false
 
-   } else{
-
-   }
-   
-   if ((!oJogadorPerdeu && aMaquinaPerdeu) && !teveEmpate){
+   } else if ((!oJogadorPerdeu && aMaquinaPerdeu) && !teveEmpate){
 
       console.log(`A Máquina estourou o limite de pontos. A pontuação final de ambos foi de ${somaDeTodasAsCartasDoUsuario} (usuário) e ${somaDeTodasAsCartasDoComputador} (Máquina)`)
 
@@ -149,10 +157,7 @@ function fimDoJogo(){
       
       devoContinuar = false
 
-   } else {    
-   }
-
-   if(oJogadorPerdeu && aMaquinaPerdeu){
+   } else if(oJogadorPerdeu && aMaquinaPerdeu){
 
       console.log(`O jogo acabou! Ambos estouraram a pontuação. Vitória da Máquina. A pontuação final de ambos foi de ${somaDeTodasAsCartasDoUsuario} (usuário) e ${somaDeTodasAsCartasDoComputador} (Máquina)`)
       
@@ -161,34 +166,6 @@ function fimDoJogo(){
    }
    
    devoIniciarAProximdaRodada()
-}
-
-function quemGanhou(){
-
-   // console.log("função quemganhou")
-
-   console.log(somaDeTodasAsCartasDoComputador)
-   console.log(somaDeTodasAsCartasDoUsuario)
-
-   let empate = Number(somaDeTodasAsCartasDoComputador) == Number(somaDeTodasAsCartasDoUsuario)
-
-   console.log(empate)
-
-   if ((somaDeTodasAsCartasDoComputador > somaDeTodasAsCartasDoUsuario) && !empate){
-
-   console.log(`Vitória da Máquina! Pontuação: Máquina ${somaDeTodasAsCartasDoComputador} ponto(s), Usuário ${somaDeTodasAsCartasDoUsuario} pontos.`)
-
-   }
-
-   if ((somaDeTodasAsCartasDoComputador < somaDeTodasAsCartasDoUsuario) && !empate) {
-
-   console.log(`Vitória do Usuário! Pontuação: Usuário ${somaDeTodasAsCartasDoUsuario}  ponto(s), Máquina ${somaDeTodasAsCartasDoComputador} pontos`)
-
-   }
-}
-if(somaDeTodasAsCartasDoUsuario === somaDeTodasAsCartasDoComputador){
-   console.log(`Empate! Ambos terminaram com ${somaDeTodasAsCartasDoComputador}`)
-
 }
 
 function devoIniciarAProximdaRodada (){
@@ -211,7 +188,37 @@ function devoIniciarAProximdaRodada (){
    }
 }
 
+function quemGanhou(){
+
+   // console.log("função quemganhou")
+
+   console.log(somaDeTodasAsCartasDoComputador)
+   console.log(somaDeTodasAsCartasDoUsuario)
+
+   let empate = Number(somaDeTodasAsCartasDoComputador) == Number(somaDeTodasAsCartasDoUsuario)
+
+   if ((somaDeTodasAsCartasDoComputador > somaDeTodasAsCartasDoUsuario) && !empate){
+
+   console.log(`Vitória da Máquina! Pontuação: Máquina ${somaDeTodasAsCartasDoComputador} ponto(s), Usuário ${somaDeTodasAsCartasDoUsuario} pontos.`)
+
+   }
+
+   if ((somaDeTodasAsCartasDoComputador < somaDeTodasAsCartasDoUsuario) && !empate) {
+
+   console.log(`Vitória do Usuário! Pontuação: Usuário ${somaDeTodasAsCartasDoUsuario}  ponto(s), Máquina ${somaDeTodasAsCartasDoComputador} pontos`)
+
+   }
+}
+
+if(somaDeTodasAsCartasDoUsuario === somaDeTodasAsCartasDoComputador){
+
+   console.log(`Empate! Ambos terminaram com ${somaDeTodasAsCartasDoComputador}`)
+
+}
+
 function oJogoAcabou (){
+
    console.log("Fim do jogo!")
    console.log("O jogo acabou.")
+
 }
