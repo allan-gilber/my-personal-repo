@@ -1,3 +1,11 @@
+##Hello and welcome to my personal repo!
+
+I'm still constructing my portfolio to better present my personal projects and skills.
+
+Thank you for your patience.
+
+Any questions? Send-me a email to "teste13241-githubEmail@yahoo.com"
+
 ##Portfolio
 
 ##What is Working
