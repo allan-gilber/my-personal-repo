@@ -1,6 +1,18 @@
-# my-personal-repo
-Here I will store my personal collection of personal projects.
+##Portfolio
 
+##What is Working
 
-# Currently under construction.
+- Home Page
+- Navigation buttons are working, but some don't lead to a working page.
 
+##What needs to be done
+
+- Make every button WORK.
+- Finish Galery Page
+- Finish Personal Skills Page
+- Make a Contact Page
+- Make the site multilingual
+- Insert my projects inside the project list.
+- Think of new things to add.
+
+Loading(20%)...
