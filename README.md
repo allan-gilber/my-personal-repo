@@ -1,10 +1,10 @@
-##Hello and welcome to my personal repo!
+#Hello and welcome to my personal repo!
 
 I'm still constructing my portfolio to better present my personal projects and skills.
 
 Thank you for your patience.
 
-Any questions? Send-me a email to "teste13241-githubEmail@yahoo.com"
+Any questions? Send-me a email to [me](teste13241-githubEmail@yahoo.com)
 
 ##Portfolio
 
@@ -15,7 +15,7 @@ Any questions? Send-me a email to "teste13241-githubEmail@yahoo.com"
 
 ##What needs to be done
 
-- Make every button WORK.
+- Make every button **WORK.**
 - Finish Galery Page
 - Finish Personal Skills Page
 - Make a Contact Page
