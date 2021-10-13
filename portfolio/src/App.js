@@ -1,49 +1,46 @@
-
-import axios from 'axios';
-import React, {useState, useEffect} from 'react';
-import { createGlobalStyle } from 'styled-components';
-import Home from './components/Home'
-import PortfolioGalery from './components/PortfolioGalery';
-
-
-const GlobalStyle= createGlobalStyle`
-body{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #fffffe;
-}
-div{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-`
-
+import React, { useState, useEffect } from "react";
+import { GlobalStyle } from "./components/CSS";
+import Home from "./components/Home";
+import PortfolioGalery from "./components/PortfolioGalery";
+import PersonalSkills from "./components/PersonalSkills";
+import ContactPage from "./components/ContactPage"
 
 function App() {
-  const [actualPage, setActualPage] = useState("home")
-  
-  function renderPage(){
-    switch(actualPage){
-      case "home":{
-        return(
-          <Home/>
-        )
-      }
+  const [actualPage, setActualPage] = useState("home");
+
+  function renderPage() {
+    switch (actualPage) {
+      case "home": {
+        return <Home 
+        setActualPage = {setActualPage}
+        />;
+      } break;
       case "portfolioGalery": {
-        <PortfolioGalery />
+        return <PortfolioGalery 
+        setActualPage = {setActualPage}
+        />;
+      } break;
+      case "personalSkills": {
+        return <PersonalSkills 
+        setActualPage = {setActualPage}
+        />;
+      } break;
+      case "contactPage": {
+        return <ContactPage 
+        setActualPage = {setActualPage}
+        />;
+      } break;
+      default:{
+        <p>Something has gone terrible wrong.</p>
       }
     }
   }
   return (
     <div>
-      <GlobalStyle/>
+      <GlobalStyle />
       {renderPage()}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

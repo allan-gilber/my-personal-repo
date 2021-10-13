@@ -1,14 +1,32 @@
 import React from 'react';
-import {NavigationButtonsContainer} from './StylesComponent';
+import {NavigationButtonsContainer} from './CSS';
 
-const NavigationButtonsComponent = () => {
+const NavigationButtonsComponent = (props) => {
     return (
         <NavigationButtonsContainer>
 
-                <button>Página Inicial</button>
-                <button>Galeria do Portfolio</button>
-                <button>Habilidades pessoais</button>
-                <button>Contato</button>
+                <div>
+                    <button
+                    onClick={() => {props.setActualPage("home")}}
+                    >
+                        Página Inicial
+                    </button>
+                    <button onClick={() => {props.setActualPage("portfolioGalery")}}>
+                        Galeria do Portfolio
+                    </button>
+                    <button
+                    onClick={() =>{props.setActualPage("personalSkills")}}
+                    >
+                        Habilidades pessoais
+                    </button>
+                </div>
+                <div>
+                    <button
+                    onClick={() => {props.setActualPage("contactPage")}}
+                    >
+                        Contato
+                    </button>
+                </div>
 
         </NavigationButtonsContainer>
     )
