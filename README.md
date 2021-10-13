@@ -23,4 +23,4 @@ Any questions? Send-me a email to me. (teste13241-githubEmail@yahoo.com)
 - Insert my projects inside the project list.
 - Think of new things to add.
 
-Loading(20%)...
+Portfolio loading...(20%)
