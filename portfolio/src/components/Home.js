@@ -8,7 +8,9 @@ import Resume from "./Resume";
 const Home = (props) => {
   return (
     <GeneralContainer>
-      <NavigationButtonsComponent setActualPage={props.setActualPage} />
+      <NavigationButtonsComponent 
+      setActualPage={props.setActualPage} 
+      />
 
       <MainBody>
         <Resume />
