@@ -7,7 +7,6 @@ export const useForm = (initialState) =>{
     const inputChange = (event) => {
         const {name, value} = event.target;
         setForm({...form, [name]: value})
-        console.log(value)
     }
 
     const statusChange = (event, value) =>{
@@ -15,5 +14,9 @@ export const useForm = (initialState) =>{
         setForm({...form, didTheUserGuessedRight: value})
     }
 
-    return {form, inputChange, statusChange}
+    const cleanInput = () =>{
+        setForm(initialState)
+    }
+
+    return {form, inputChange, statusChange, cleanInput}
 }

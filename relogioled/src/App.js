@@ -3,9 +3,6 @@ import Home from './components/Home';
 
 const GlobalStyle = createGlobalStyle`
 body{
-  /* box-sizing: border-box;
-  /* height: 100vh;
-  width: 100vw; */
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
