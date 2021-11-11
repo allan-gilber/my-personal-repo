@@ -13,10 +13,13 @@ export function useGetData() {
         const number = request.data.value
         const digitsArray = request.data.value.toString().split('')
         setSecretNumber({number, digitsArray})
+        console.log('request', request)
+        console.log('number', number)
+        console.log('array', digitsArray)
       } catch(error){
-        setSecretNumber(0)
-      };
+      console.log("deu erro")
     }
+  }
 
   return {secretNumber, getSecretNumber, errorMessage, setErrorMessage};
 }

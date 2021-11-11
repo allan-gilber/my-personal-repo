@@ -345,7 +345,7 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <h3>QUAL É O NÚMERO?</h3>
+      <span>QUAL É O NÚMERO?</span>
       {newGame ? (
         <StatusMessageStyle>
           {statusMessageArgument === null ? (
