@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   HomeContainer,
   Counter,
-  FirstNumberContainer,
+  NumberContainer,
   ButtonForNewMatchStyle,
   StatusMessageStyle,
 } from "./HomeStyle";
@@ -12,12 +12,11 @@ import { useGetData } from "./Hooks/useGetData";
 import Refresh from "../img/refresh.png";
 
 const Home = () => {
-  const { secretNumber, getSecretNumber, errorMessage, setErrorMessage } =
+  const { secretNumber, getSecretNumber } =
     useGetData();
   const { form, inputChange, cleanInput } = useForm({
-    inputNumber: Number,
+    inputNumber: null,
   });
-  const [guessedNumberLength, setGuessedNumberLength] = useState(1);
   const [didTheUserGuessedRight, setDidTheUserGuessedRight] = useState(null);
   const [displayNumber, setDisplayNumber] = useState(0);
   const [newGame, setNewGame] = useState(false);
@@ -56,6 +55,11 @@ const Home = () => {
   function enableNewGame() {
     setNewGame(true);
   }
+
+  function handleDisabledStatus(id, argument){
+    console.log(id)
+    document.getElementById({id}).disabled = argument
+  }
   const tryToGuessTheNumber = (event) => {
     event.preventDefault();
 
@@ -64,10 +68,9 @@ const Home = () => {
     const guessedDigitsArray = form.inputNumber.toString().split("");
 
     if (secretNumber.number.toString() === guessedNumber) {
-      setGuessedNumberLength(secretNumber.digitsArray.length);
       setDisplayNumber(form.inputNumber);
       setDidTheUserGuessedRight(true);
-      setErrorMessage(3);
+      setStatusMessageArgument(3);
       setOpacityOfSegment1(numberRenderConfig(guessedDigitsArray[0]));
       setOpacityOfSegment2(numberRenderConfig(guessedDigitsArray[1]));
       setOpacityOfSegment3(numberRenderConfig(guessedDigitsArray[2]));
@@ -75,20 +78,20 @@ const Home = () => {
       cleanInput();
     } else {
       setDisplayNumber(form.inputNumber);
-      setGuessedNumberLength(secretNumber.digitsArray.length);
       setDidTheUserGuessedRight(false);
       setStatusMessageArgument(greaterOrLesser());
       setOpacityOfSegment1(numberRenderConfig(guessedDigitsArray[0]));
       setOpacityOfSegment2(numberRenderConfig(guessedDigitsArray[1]));
       setOpacityOfSegment3(numberRenderConfig(guessedDigitsArray[2]));
-      enableNewGame();
       cleanInput();
     }
   };
   const greaterOrLesser = () => {
-    if (secretNumber > form.inputNumber) {
+    if (secretNumber.number > form.inputNumber) {
+      console.log('comparar', secretNumber.number, form.inputNumber)
       return 2;
     } else {
+      console.log('comparar', secretNumber.number, form.inputNumber)
       return 1;
     }
   };
@@ -103,11 +106,11 @@ const Home = () => {
     } else {
       const color = didTheUserGuessedRight
         ? opacityOfSegment1[value]
-          ? "green"
-          : "gray"
+          ? "#32BF00"
+          : "#DDDDDD"
         : opacityOfSegment1[value]
         ? "red"
-        : "gray";
+        : "#DDDDDD";
       return color;
     }
   }
@@ -118,11 +121,11 @@ const Home = () => {
     } else {
       const color = didTheUserGuessedRight
         ? opacityOfSegment2[value]
-          ? "green"
-          : "gray"
+          ? "#32BF00"
+          : "#DDDDDD"
         : opacityOfSegment2[value]
         ? "red"
-        : "gray";
+        : "#DDDDDD";
       return color;
     }
   }
@@ -133,11 +136,11 @@ const Home = () => {
     } else {
       const color = didTheUserGuessedRight
         ? opacityOfSegment3[value]
-          ? "green"
-          : "gray"
+          ? "#32BF00"
+          : "#DDDDDD"
         : opacityOfSegment3[value]
         ? "red"
-        : "gray";
+        : "#DDDDDD";
       return color;
     }
   }
@@ -149,7 +152,7 @@ const Home = () => {
       case 2:
         return <p style={{ color: "#d98324" }}>É maior</p>;
       case 3:
-        return <p style={{ color: "green" }}>Você acertou</p>;
+        return <p style={{ color: "#32BF00" }}>Você acertou!!!!</p>;
       case 4:
         return <p style={{ color: "red" }}>Erro</p>;
       default:
@@ -161,54 +164,47 @@ const Home = () => {
     return (
       <Counter>
         <>
-          <FirstNumberContainer>
+          <NumberContainer>
             <div
               style={{
                 backgroundColor: setStyleSegment1(0),
-                opacity: opacityOfSegment1[0] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment1(1),
-                opacity: opacityOfSegment1[1] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment1(2),
-                opacity: opacityOfSegment1[2] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment1(3),
-                opacity: opacityOfSegment1[3] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment1(4),
-                opacity: opacityOfSegment1[4] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment1(5),
-                opacity: opacityOfSegment1[5] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment1(6),
-                opacity: opacityOfSegment1[6] ? 1 : 0.2,
               }}
             />
-          </FirstNumberContainer>
+          </NumberContainer>
         </>
         <>
           {displayNumber.length > 1 ? (
-            <FirstNumberContainer>
+            <NumberContainer>
               <div
                 style={{
                   backgroundColor: setStyleSegment2(0),
@@ -224,83 +220,71 @@ const Home = () => {
               <div
                 style={{
                   backgroundColor: setStyleSegment2(2),
-                  opacity: opacityOfSegment2[2] ? 1 : 0.2,
                 }}
               />
               <div
                 style={{
                   backgroundColor: setStyleSegment2(3),
-                  opacity: opacityOfSegment2[3] ? 1 : 0.2,
                 }}
               />
               <div
                 style={{
                   backgroundColor: setStyleSegment2(4),
-                  opacity: opacityOfSegment2[4] ? 1 : 0.2,
                 }}
               />
               <div
                 style={{
                   backgroundColor: setStyleSegment2(5),
-                  opacity: opacityOfSegment2[5] ? 1 : 0.2,
                 }}
               />
               <div
                 style={{
                   backgroundColor: setStyleSegment2(6),
-                  opacity: opacityOfSegment2[6] ? 1 : 0.2,
                 }}
               />
-            </FirstNumberContainer>
+            </NumberContainer>
           ) : (
             <></>
           )}
         </>
         {displayNumber.length > 2 ? (
-          <FirstNumberContainer>
+          <NumberContainer>
             <div
               style={{
                 backgroundColor: setStyleSegment3(0),
-                opacity: opacityOfSegment3[0] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment3(1),
-                opacity: opacityOfSegment3[1] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment3(2),
-                opacity: opacityOfSegment3[2] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment3(3),
-                opacity: opacityOfSegment3[3] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment3(4),
-                opacity: opacityOfSegment3[4] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment3(5),
-                opacity: opacityOfSegment3[5] ? 1 : 0.2,
               }}
             />
             <div
               style={{
                 backgroundColor: setStyleSegment3(6),
-                opacity: opacityOfSegment3[6] ? 1 : 0.2,
               }}
             />
-          </FirstNumberContainer>
+          </NumberContainer>
         ) : (
           <></>
         )}
@@ -337,7 +321,7 @@ const Home = () => {
             placeholder="Digite o palpite"
             required
           />
-          <button disable={secretNumber}>ENVIAR</button>
+          <button>ENVIAR</button>
         </form>
       );
     }
@@ -346,22 +330,18 @@ const Home = () => {
   return (
     <HomeContainer>
       <span>QUAL É O NÚMERO?</span>
-      {newGame ? (
         <StatusMessageStyle>
           {statusMessageArgument === null ? (
-            <></>
+            <p></p>
           ) : (
             renderStatusMessage(statusMessageArgument)
           )}
         </StatusMessageStyle>
-      ) : (
-        <></>
-      )}
       {renderCounter()}
       {newGame ? (
         <ButtonForNewMatchStyle>
           <nav onClick={() => window.location.reload()}>
-            <img src={Refresh} />
+            <img alt="Refresh" src={Refresh} />
             <p>NOVA PARTIDA</p>
           </nav>
         </ButtonForNewMatchStyle>

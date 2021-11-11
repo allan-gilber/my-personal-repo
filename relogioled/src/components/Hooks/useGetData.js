@@ -4,7 +4,6 @@ import axios from "axios";
 export function useGetData() {
 
     const [secretNumber, setSecretNumber] = useState(Number)
-    const [errorMessage, setErrorMessage] = useState(false)
 
     const getSecretNumber= async () => {
       try { 
@@ -21,5 +20,5 @@ export function useGetData() {
     }
   }
 
-  return {secretNumber, getSecretNumber, errorMessage, setErrorMessage};
+  return {secretNumber, getSecretNumber};
 }
