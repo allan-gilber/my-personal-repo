@@ -163,7 +163,7 @@ const Home = () => {
             name="inputNumber"
             value={form.inputNumber}
             onChange={inputChange}
-            pattern="^?0*[1-9]([1-9]|[0-9]{0,2}|[1-2][0-9][0-9]|300)$"
+            pattern="^(?!0+$)(0*300|0*[1-9]{1}[0-9]{0,1}|0*[1-2]?[0-9]{1,2}|0*[1-9]{1})$"
             title="number between 1 and 300"
             placeholder="Digite o palpite"
             required
