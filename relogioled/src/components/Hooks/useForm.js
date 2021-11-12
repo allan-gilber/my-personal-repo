@@ -18,5 +18,5 @@ export const useForm = (initialState) =>{
         setForm(initialState)
     }
 
-    return {form, setForm, inputChange, statusChange, cleanInput}
+    return {form, setForm, inputChange, statusChange, cleanInput, setForm}
 }

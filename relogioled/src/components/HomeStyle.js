@@ -93,6 +93,7 @@ export const HomeContainer = styled.div`
     input:disabled {
       border: 1px solid #CFCFCF;
       background-color: #F5F5F5;
+      color: #9E9E9E;
     }
   }
 `;

@@ -151,6 +151,9 @@ const Home = () => {
       return (
         <form onSubmit={tryToGuessTheNumber}>
           <input
+            value={form.inputNumber}
+            placeholder="Digite o palpite"
+
             disabled
           />
           <button disabled>ENVIAR</button>

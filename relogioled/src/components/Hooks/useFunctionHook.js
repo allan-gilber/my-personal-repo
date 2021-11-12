@@ -89,15 +89,15 @@ export function useFunctionHook(){
 
     const guessedDigitsArray = guessedNumber.toString().split("");
 
-    if (secretNumber.number.toString() === guessedNumber) {
+    if (secretNumber.number === guessedNumber) {
       setDisplayNumber(guessedNumber);
       setDidTheUserGuessedRight(true);
       setStatusMessageArgument(3);
       setOpacityOfSegment1(numberRenderConfig(guessedDigitsArray[0]));
       setOpacityOfSegment2(numberRenderConfig(guessedDigitsArray[1]));
       setOpacityOfSegment3(numberRenderConfig(guessedDigitsArray[2]));
-      enableNewGame();
       cleanInput();
+      enableNewGame();
     } else {
       setDisplayNumber(guessedNumber);
       setDidTheUserGuessedRight(false);
@@ -109,7 +109,7 @@ export function useFunctionHook(){
     }
   };
   const greaterOrLesser = () => {
-    if (secretNumber.number > form.inputNumber) {
+    if (secretNumber.number > Number(form.inputNumber)) {
       return 2;
     } else {
       return 1;
