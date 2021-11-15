@@ -1,9 +1,9 @@
 import React from "react";
-import NavigationButtonsComponent from "./NavigationButtonsComponent";
-import Footer from "./Footer";
-import BlackJackImage from "../img/BlackJackImage.jpg";
-import GreaterThan from "../img/GreaterThan.png";
-import BlackJackInterface from "../img/BlackJackInterface.png";
+import NavigationButtonsComponent from "../../components/NavigationButtonsComponent";
+import Footer from "../../components/Footer";
+import BlackJackImage from "../../img/BlackJackImage.jpg";
+import GreaterThan from "../../img/GreaterThan.png";
+import BlackJackInterface from "../../img/BlackJackInterface.png";
 import {
   GeneralContainer,
   GeneralTextFormat,
@@ -11,7 +11,7 @@ import {
   ProjectGaleryStyle,
   ProjectBanner,
   ProjectDescription,
-} from "./CSS";
+} from "../../components/CSS";
 
 function PortfolioGalery(props) {
   return (
