@@ -1,5 +1,5 @@
 import React from "react";
-import { GeneralTextFormat, ResumeBoxStyle } from "./CSS";
+import { GeneralTextFormat, ResumeBoxStyle } from "./ResumeStyle";
 
 const Resume = () => {
   return (

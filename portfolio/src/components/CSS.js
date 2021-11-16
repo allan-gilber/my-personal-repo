@@ -12,6 +12,9 @@ body{
   background-color: #fffffe;
   background-image: url(${BackgroundImage});
 }
+div{
+  min-width: 110vw;
+}
 `;
 
 export const NavigationButtonsContainer = styled.div`
