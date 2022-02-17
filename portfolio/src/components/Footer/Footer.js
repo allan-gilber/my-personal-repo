@@ -1,5 +1,5 @@
 import React from "react";
-import { SocialNetworkContainer } from "./CSS";
+import { SocialNetworkContainer } from "./FooterStyle";
 
 const Footer = () => {
   return (
