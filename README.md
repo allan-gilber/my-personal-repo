@@ -1,3 +1,5 @@
+# OUTDATED
+
 # Hello and welcome to my personal repository!
 
 I'm still constructing my portfolio to better present my personal projects and skills.
